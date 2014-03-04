@@ -10,7 +10,7 @@ const (
 	ENDPOINT = "https://new.boxcar.io/api/notifications"
 )
 
-func notify(credentials string, title string, long_message string, sound string) (body string, err error) {
+func notify(credentials string, title string, long_message string, sound string) (string, error) {
 
 	values := make(url.Values)
 	values.Set("user_credentials", credentials)
@@ -20,9 +20,10 @@ func notify(credentials string, title string, long_message string, sound string)
 
 	r, err := http.PostForm(ENDPOINT, values)
 	if err != nil {
-		return '', err
+		return "", err
 	}
+
 	body, _ := ioutil.ReadAll(r.Body)
-	r.Body.Close()
-	return body, nil
+	defer r.Body.Close()
+	return string(body), nil
 }
