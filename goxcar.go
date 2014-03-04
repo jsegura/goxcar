@@ -1,3 +1,4 @@
+// Golang client for Boxcar.io
 package goxcar
 
 import (
@@ -10,6 +11,7 @@ const (
 	ENDPOINT = "https://new.boxcar.io/api/notifications"
 )
 
+// Notify makes an API call to boxcar.io
 func Notify(credentials string, title string, long_message string, sound string) (string, error) {
 
 	values := make(url.Values)
