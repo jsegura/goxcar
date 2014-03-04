@@ -10,7 +10,7 @@ const (
 	ENDPOINT = "https://new.boxcar.io/api/notifications"
 )
 
-func notify(credentials string, title string, long_message string, sound string) (string, error) {
+func Notify(credentials string, title string, long_message string, sound string) (string, error) {
 
 	values := make(url.Values)
 	values.Set("user_credentials", credentials)
